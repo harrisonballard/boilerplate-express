@@ -9,6 +9,6 @@ app.get("/", function(req, res) {
     res.sendFile(__dirname + "/views/index.html");
     });
 
-app.use(__dirname + '/public', express.static())
+app.use(express.static('public'))
 
  module.exports = app;
