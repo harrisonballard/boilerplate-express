@@ -5,14 +5,21 @@ var app = express();
 //     res.send('Hello Express');
 // })
 
-app.get("/", function(req, res) {
-    res.sendFile(__dirname + "/views/index.html");
-    });
+// app.get("/", function(req, res) {
+//     res.sendFile(__dirname + "/views/index.html");
+//     });
 
-app.use(express.static('public'))
+// app.use(express.static('public'))
+
+// app.get("/json", function(req, res) {
+//        res.json({"message": "Hello json"});
+//   });
 
 app.get("/json", function(req, res) {
-       res.json({"message": "Hello json"});
-  });
+if(process.env.MESSAGE_STYLE === 'uppercase') {
+    res.json({"message": "HELLO JSON"});
+    } 
+        res.json({"message": "Hello json"});
+});
 
  module.exports = app;
