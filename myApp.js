@@ -6,6 +6,15 @@ app.get('/json', function(req, res, next){
     next();
     })
 
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: true }));
+app.post('/name', function(req, res) {
+    // Handle the data in the request
+    var firstName = req.body.first;
+    var lastName = req.body.last;
+    res.send({"name": firstName + " " + lastName})
+});
+
 // app.get('/', function(req, res) {
 //     res.send('Hello Express');
 // })
@@ -33,5 +42,12 @@ next();
 }, function(req, res) {
     res.send({time: req.time});
 })
+
+app.post("/name", function(req, res){
+    var firstName = req.query.first;
+    var lastName = req.query.last;
+    res.send({"name": firstName + " " + lastName});
+  });
+  
 
  module.exports = app;
